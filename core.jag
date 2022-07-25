@@ -1,0 +1,18 @@
+["@ JaGrammar core rules", {
+  "ALPHA":  ["@ Characters A~Z and a~z", { "upper case": ["~", "A", "Z"], "lower case": ["~", "a", "z"] }],
+  "BIT":    ["@ BInary digiTs", { "unset": "0", "set": "1" }],
+  "CHAR":   ["~ US-ASCII character excluding NUL", "\u0001", "\u007F"],
+  "CR":     ["; Carriage Return", "\u000D"],
+  "CRLF":   ["; Internet standard newline", ["?", "CR"], ["?", "LF"]],
+  "CTL":    ["@ ConTroL chars", { "": [ "~", "\u0000", "\u001F" ], "": "\u007F" }],
+  "DIGIT":  ["~ Any Character 0 to 9", "0", "9"],
+  "DQUOTE": ["; Double QUOTE", "\u0022"],
+  "HEXDIG": ["@ HEXadecimal DIGits 0~F or 0~f", { "": ["?", "DIGIT"], "": ["~", "A", "F"], "": ["~", "a", "f"] }],
+  "HTAB":   ["; Horizontal TAB", "\u0009" ],
+  "LF":     ["; LineFeed", "\u000A" ],
+  "LWSP":   ["; Linear White Space, Pernicious", 0, [ "@", ["?", "WSP" ], [";", ["?", "CRLF"], ["?", "WSP"]]]],
+  "OCTET":  ["~ 8 bits of data", "\u0000", "\u00FF"],
+  "SP":     ["; SPace", "\u0020"],
+  "VCHAR":  ["~ Visible CHARacters", "\u0021", "\u007E"],
+  "WSP":    ["@ White SPace", { "": ["?", "SP"], "": ["?", "HTAB"] }]
+}]
